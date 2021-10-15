@@ -26,10 +26,8 @@ public class Controller {
 				int op = vista.pedirDato("Por favor ingresa la opción que quieres\n1.Generar vectores \n2.Quiero crear los 2 vectores");
 				var tam = vista.pedirDato("Ingresa el tamaño de los array");
 				if(op == 1) {
-					var rangoInicial = vista.pedirDato("Ingresa el rango inicial");
-					var rangoFinal = vista.pedirDato("Ingresa el rango final");
-					var vector1 = vector.crear(rangoInicial, rangoFinal, tam);
-					var vector2 = vector.crear(rangoInicial, rangoFinal, tam);
+					var vector1 = vector.crear(tam);
+					var vector2 = vector.crear(tam);
 					var unionVector = vector.juntarVectores(vector1, vector2);
 					var mediana = vector.mediana(vector1, vector2,0,tam, 0, tam);
 					vista.imprimirMensaje("Solución al ejercicio \nVector1 --> "+vector.toString(vector1)+"\nVector2 --> "+vector.toString(vector2)+"\nLa mediana entre los arrays igual a "+mediana+"\nEl vector final es --> "+vector.toString(unionVector));
