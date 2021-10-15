@@ -2,11 +2,10 @@ package co.edu.unbosque.controller;
 
 import java.util.Random;
 
-
 import co.edu.unbosque.model.Matriz;
+import co.edu.unbosque.model.Strassen;
 import co.edu.unbosque.model.Vector;
 import co.edu.unbosque.view.View;
-
 
 public class Controller {
 
@@ -15,80 +14,92 @@ public class Controller {
 	private Vector vector;
 
 	public Controller() {
-		vista = new View();
-		vector = new Vector();
-		int t = 0;
-		int c = 0;
-		int dato = vista.pedirDato(
-				"Por favor escoja el ejercicio que quiere realizar\n1.Mediana de dos vectores\n2.Multiplicacion de dos Matrices");
-		switch (dato) {
-			case 1: {
-				int op = vista.pedirDato("Por favor ingresa la opcion que quieres\n1.Generar vectores \n2.Quiero crear los 2 vectores");
-				var tam = vista.pedirDato("Ingresa el tamaño de los array");
-				if(op == 1) {
-					var rangoInicial = vista.pedirDato("Ingresa el rango inicial");
-					var rangoFinal = vista.pedirDato("Ingresa el rango final");
-					var vector1 = vector.crear(rangoInicial, rangoFinal, tam);
-					var vector2 = vector.crear(rangoInicial, rangoFinal, tam);
-					var unionVector = vector.juntarVectores(vector1, vector2);
-					var mediana = vector.mediana(vector1, vector2,0,tam, 0, tam);
-					vista.imprimirMensaje("Soluci9n al ejercicio \nVector1 >> "+vector.toString(vector1)+"\nVector2 >> "+vector.toString(vector2)+"\nLa mediana entre los arrays igual a "+mediana+"\nEl vector final es --> "+vector.toString(unionVector));
-					if(vista.pedirDato("Desea seguir o parar el programa \n1.Seguir\n2.Cualquier número para salir")==1) {
-						new Controller();
-					}else {
-						salir();
-					}
-				}else if (op == 2) {
-					var x = 0;
-					var vector1 = new int[tam];
-						var vector2 = new int[tam];
-						for (int i = 0; i < vector1.length; i++) {
-							vector1[i] = vista.pedirDato("Valor en la posicion "+i+" del vector uno");	
-						}
-						for (int i = 0; i < vector2.length; i++) {
-							vector2[i] = vista.pedirDato("Valor en la posicion "+i+" del vector dos ");	
-						}
-						vector.ordenar(vector1);
-						vector.ordenar(vector2);
-						var unionVector = vector.juntarVectores(vector1, vector2);
-						var mediana = vector.mediana(vector1, vector2,0,tam, 0, tam);
-						vista.imprimirMensaje("Solucion al ejercicio \nVector1 --> "+vector.toString(vector1)+"\nVector2 >> "+vector.toString(vector2)+"\nLa mediana entre los arrays igual a "+mediana+"\nEl vector final es >> "+vector.toString(unionVector));
-						
-						if(vista.pedirDato("Desea seguir o parar el programa \n1.Seguir\n2.Cualquier numero para salir")==1) {
-							new Controller();
-						}else {
-							salir();
-						}
-					}else {
-						vista.imprimirMensaje("Disculpa, Ingresaste un numero incorrecto");
-						salir();
-					}
-				break;
-			}
-			case 2: {
-				dato = vista
-						.pedirDato("Por favor escoge una solucion \n1.Manera super efe\n2.Forma de Divide y Venceras ;)");
-				do {
-					t = vista.pedirDato("Digite el tamano de cantidad de filas: ");
-				} while (t <= 0);
-				do {
-					c = vista.pedirDato("Digite el tamano de cantidad de columnas: ");
-				} while (c <= 0);
-				num = new Matriz(t, c);
-				break;
-			}
-			default:{
-				vista.imprimirMensaje("Disculpa, Ingresaste un numero incorrecto");
-				salir();
-			}
-		}	
 
-		
+		Strassen matrix = new Strassen();
+		int[][] A = { { 1, 2, 4 }, { 4, 3, 5 }, { 1, 2, 4 }};
 
-		funcionar();
+		int[][] B = { { 1, 0, 6 }, { 1, 2 , 6 }, { 1, 2, 4 }};
+
+		int[][] Z = matrix.multiply(A, B);
+
+		System.out.println("\n Matriz final");
+		matrix.imprimirMatriz(Z);
+
+//		vista = new View();
+//		vector = new Vector();
+//		int t = 0;
+//		int c = 0;
+//		int dato = vista.pedirDato(
+//				"Por favor escoja el ejercicio que quiere realizar\n1.Mediana de dos vectores\n2.Multiplicacion de dos Matrices");
+//		switch (dato) {
+//			case 1: {
+//				int op = vista.pedirDato("Por favor ingresa la opcion que quieres\n1.Generar vectores \n2.Quiero crear los 2 vectores");
+//				var tam = vista.pedirDato("Ingresa el tamaño de los array");
+//				if(op == 1) {
+//					var rangoInicial = vista.pedirDato("Ingresa el rango inicial");
+//					var rangoFinal = vista.pedirDato("Ingresa el rango final");
+//					var vector1 = vector.crear(rangoInicial, rangoFinal, tam);
+//					var vector2 = vector.crear(rangoInicial, rangoFinal, tam);
+//					var unionVector = vector.juntarVectores(vector1, vector2);
+//					var mediana = vector.mediana(vector1, vector2,0,tam, 0, tam);
+//					vista.imprimirMensaje("Soluci9n al ejercicio \nVector1 >> "+vector.toString(vector1)+"\nVector2 >> "+vector.toString(vector2)+"\nLa mediana entre los arrays igual a "+mediana+"\nEl vector final es --> "+vector.toString(unionVector));
+//					if(vista.pedirDato("Desea seguir o parar el programa \n1.Seguir\n2.Cualquier número para salir")==1) {
+//						new Controller();
+//					}else {
+//						salir();
+//					}
+//				}else if (op == 2) {
+//					var x = 0;
+//					var vector1 = new int[tam];
+//						var vector2 = new int[tam];
+//						for (int i = 0; i < vector1.length; i++) {
+//							vector1[i] = vista.pedirDato("Valor en la posicion "+i+" del vector uno");	
+//						}
+//						for (int i = 0; i < vector2.length; i++) {
+//							vector2[i] = vista.pedirDato("Valor en la posicion "+i+" del vector dos ");	
+//						}
+//						vector.ordenar(vector1);
+//						vector.ordenar(vector2);
+//						var unionVector = vector.juntarVectores(vector1, vector2);
+//						var mediana = vector.mediana(vector1, vector2,0,tam, 0, tam);
+//						vista.imprimirMensaje("Solucion al ejercicio \nVector1 --> "+vector.toString(vector1)+"\nVector2 >> "+vector.toString(vector2)+"\nLa mediana entre los arrays igual a "+mediana+"\nEl vector final es >> "+vector.toString(unionVector));
+//						
+//						if(vista.pedirDato("Desea seguir o parar el programa \n1.Seguir\n2.Cualquier numero para salir")==1) {
+//							new Controller();
+//						}else {
+//							salir();
+//						}
+//					}else {
+//						vista.imprimirMensaje("Disculpa, Ingresaste un numero incorrecto");
+//						salir();
+//					}
+//				break;
+//			}
+//			case 2: {
+//				dato = vista
+//						.pedirDato("Por favor escoge una solucion \n1.Manera super efe\n2.Forma de Divide y Venceras ;)");
+//				do {
+//					t = vista.pedirDato("Digite el tamano de cantidad de filas: ");
+//				} while (t <= 0);
+//				do {
+//					c = vista.pedirDato("Digite el tamano de cantidad de columnas: ");
+//				} while (c <= 0);
+//				num = new Matriz(t, c);
+//				break;
+//			}
+//			default:{
+//				vista.imprimirMensaje("Disculpa, Ingresaste un numero incorrecto");
+//				salir();
+//			}
+//		}	
+//
+//		
+//
+//		funcionar();
 	}
+
 	public void escogerMatriz(int opcion) {
-		
+
 	}
 
 	public void funcionar() {
@@ -121,6 +132,7 @@ public class Controller {
 			}
 		}
 	}
+
 	public void salir() {
 		System.exit(0);
 	}
