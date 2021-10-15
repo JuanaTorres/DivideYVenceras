@@ -2,44 +2,74 @@ package co.edu.unbosque.controller;
 
 import java.util.Random;
 
+
 import co.edu.unbosque.model.Matriz;
+import co.edu.unbosque.model.Vector;
 import co.edu.unbosque.view.View;
+
 
 public class Controller {
 
 	private View vista;
 	private Matriz num;
+	private Vector vector;
 
 	public Controller() {
 		vista = new View();
+		vector = new Vector();
 		int t = 0;
 		int c = 0;
 		int dato = vista.pedirDato(
 				"Por favor escoja el ejercicio que quiere realizar\n1.Mediana de dos vectores\n2.Multiplicación de dos Matrices");
 		switch (dato) {
 			case 1: {
-	
+				int op = vista.pedirDato("Por favor ingresa la opción que quieres\n1.Generar vectores \n2.Quiero crear los 2 vectores");
+				var tam = vista.pedirDato("Ingresa el tamaño de los array");
+					if(op == 1) {
+						var rangoInicial = vista.pedirDato("Ingresa el rango inicial");
+						var rangoFinal = vista.pedirDato("Ingresa el rango final");
+						var vector1 = vector.crearVector(rangoInicial, rangoFinal, tam);
+						var vector2 = vector.crearVector(rangoInicial, rangoFinal, tam);
+						var unionVector = vector.juntarVectores(vector1, vector2);
+						var mediana = vector.mediana(vector1, vector2,0,tam, 0, tam);
+						vista.imprimirMensaje("Solución al ejercicio \nVector1 --> "+vector.toString(vector1)+"\nVector2 --> "+vector.toString(vector2)+"\nLa mediana entre los arrays igual a "+mediana+"\nEl vector final es --> "+vector.toString(unionVector));
+						if(vista.pedirDato("Desea seguir o parar el programa \n1.Seguir\n2.Cualquier número para salir")==1) {
+							new Controller();
+						}else {
+							salir();
+						}
+					}else if (op == 2) {
+						
+					}else {
+						vista.imprimirMensaje("Disculpa, Ingresaste un número incorrecto");
+						salir();
+					}
 				break;
 			}
 			case 2: {
 				dato = vista
-						.pedirDato("Por favor escoge una solución \n1.Manera super efe\n2.Forma de Devide y Venceras;)");
+						.pedirDato("Por favor escoge una solución \n1.Manera super efe\n2.Forma de Divide y Venceras;)");
+				do {
+					t = vista.pedirDato("Digite el tama�o de cantidad de filas: ");
+				} while (t <= 0);
+				do {
+					c = vista.pedirDato("Digite el tama�o de cantidad de columnas: ");
+				} while (c <= 0);
+				num = new Matriz(t, c);
 				break;
 			}
 			default:{
-				vista.imprimirMensaje("Disculpa, Ingresaste un número incompleto");
+				vista.imprimirMensaje("Disculpa, Ingresaste un número incorrecto");
+				salir();
 			}
 		}	
 
-		do {
-			t = vista.pedirDato("Digite el tama�o de cantidad de filas: ");
-		} while (t <= 0);
-		do {
-			c = vista.pedirDato("Digite el tama�o de cantidad de columnas: ");
-		} while (c <= 0);
-		num = new Matriz(t, c);
+		
 
 		funcionar();
+	}
+	public void escogerMatriz(int opcion) {
+		
 	}
 
 	public void funcionar() {
@@ -71,6 +101,9 @@ public class Controller {
 				}
 			}
 		}
+	}
+	public void salir() {
+		System.exit(0);
 	}
 
 }

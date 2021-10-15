@@ -1,4 +1,5 @@
 package co.edu.unbosque.view;
+import java.util.Arrays;  
 
 import javax.swing.JOptionPane;
 
@@ -16,7 +17,9 @@ public class View {
 	public void imprimirMensaje(String m) {
 		JOptionPane.showMessageDialog(null, m);
 	}
-
+	public void imprimirVector(int[] vector) {
+		JOptionPane.showMessageDialog(null,Arrays.toString(vector));
+	}
 	public int pedirDato(String m) {
 		int cambio = 0;
 		while (cambio == 0) {

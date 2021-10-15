@@ -1,9 +1,34 @@
 package co.edu.unbosque.model;
 
+import java.util.Arrays;
+import java.util.Random;
+
 public class Vector {
 	
 	public Vector() {
 		
+	}
+
+	public  int [] crearVector(int desde, int hasta, int tam){
+        int[] numeros = new int[tam];                                                                             
+        Random rnd = new Random();
+        for (int i = 0; i < numeros.length; i++) {
+             numeros[i] = rnd.nextInt(hasta - desde + 1) + desde;                                                 
+        }
+        Arrays.sort(numeros);
+        return numeros;
+	}
+	public String toString(int[] vector) {
+		return Arrays.toString(vector);
+	}
+	public int[] juntarVectores(int[] a,int[] b) {
+		int lenArray1 = a.length;
+        int lenArray2 = b.length;
+        int[] concate = new int[lenArray1 + lenArray2];
+        System.arraycopy(a, 0, concate, 0, lenArray1);  
+        System.arraycopy(b, 0, concate, lenArray1, lenArray2);
+        Arrays.sort(concate);
+        return concate;
 	}
 	
 	public int mediana(int[] X, int[] Y, int primX, int ultX, int primY, int ultY) {
@@ -36,4 +61,5 @@ public class Vector {
 			return mediana(X,Y,primX,primX+nitems,ultY-nitems,ultY);
 		}
 	}
+	
 }
