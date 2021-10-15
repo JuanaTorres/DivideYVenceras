@@ -20,17 +20,17 @@ public class Controller {
 		int t = 0;
 		int c = 0;
 		int dato = vista.pedirDato(
-				"Por favor escoja el ejercicio que quiere realizar\n1.Mediana de dos vectores\n2.Multiplicación de dos Matrices");
+				"Por favor escoja el ejercicio que quiere realizar\n1.Mediana de dos vectores\n2.Multiplicacion de dos Matrices");
 		switch (dato) {
 			case 1: {
-				int op = vista.pedirDato("Por favor ingresa la opción que quieres\n1.Generar vectores \n2.Quiero crear los 2 vectores");
+				int op = vista.pedirDato("Por favor ingresa la opcion que quieres\n1.Generar vectores \n2.Quiero crear los 2 vectores");
 				var tam = vista.pedirDato("Ingresa el tamaño de los array");
 				if(op == 1) {
 					var vector1 = vector.crear(tam);
 					var vector2 = vector.crear(tam);
 					var unionVector = vector.juntarVectores(vector1, vector2);
 					var mediana = vector.mediana(vector1, vector2,0,tam, 0, tam);
-					vista.imprimirMensaje("Solución al ejercicio \nVector1 --> "+vector.toString(vector1)+"\nVector2 --> "+vector.toString(vector2)+"\nLa mediana entre los arrays igual a "+mediana+"\nEl vector final es --> "+vector.toString(unionVector));
+					vista.imprimirMensaje("Soluci9n al ejercicio \nVector1 >> "+vector.toString(vector1)+"\nVector2 >> "+vector.toString(vector2)+"\nLa mediana entre los arrays igual a "+mediana+"\nEl vector final es --> "+vector.toString(unionVector));
 					if(vista.pedirDato("Desea seguir o parar el programa \n1.Seguir\n2.Cualquier número para salir")==1) {
 						new Controller();
 					}else {
@@ -41,42 +41,42 @@ public class Controller {
 					var vector1 = new int[tam];
 						var vector2 = new int[tam];
 						for (int i = 0; i < vector1.length; i++) {
-							vector1[i] = vista.pedirDato("Valor en la posición "+i+" del vector uno");	
+							vector1[i] = vista.pedirDato("Valor en la posicion "+i+" del vector uno");	
 						}
 						for (int i = 0; i < vector2.length; i++) {
-							vector2[i] = vista.pedirDato("Valor en la posición "+i+" del vector dos ");	
+							vector2[i] = vista.pedirDato("Valor en la posicion "+i+" del vector dos ");	
 						}
 						vector.ordenar(vector1);
 						vector.ordenar(vector2);
 						var unionVector = vector.juntarVectores(vector1, vector2);
 						var mediana = vector.mediana(vector1, vector2,0,tam, 0, tam);
-						vista.imprimirMensaje("Solución al ejercicio \nVector1 --> "+vector.toString(vector1)+"\nVector2 --> "+vector.toString(vector2)+"\nLa mediana entre los arrays igual a "+mediana+"\nEl vector final es --> "+vector.toString(unionVector));
+						vista.imprimirMensaje("Solucion al ejercicio \nVector1 --> "+vector.toString(vector1)+"\nVector2 >> "+vector.toString(vector2)+"\nLa mediana entre los arrays igual a "+mediana+"\nEl vector final es >> "+vector.toString(unionVector));
 						
-						if(vista.pedirDato("Desea seguir o parar el programa \n1.Seguir\n2.Cualquier número para salir")==1) {
+						if(vista.pedirDato("Desea seguir o parar el programa \n1.Seguir\n2.Cualquier numero para salir")==1) {
 							new Controller();
 						}else {
 							salir();
 						}
 					}else {
-						vista.imprimirMensaje("Disculpa, Ingresaste un número incorrecto");
+						vista.imprimirMensaje("Disculpa, Ingresaste un numero incorrecto");
 						salir();
 					}
 				break;
 			}
 			case 2: {
 				dato = vista
-						.pedirDato("Por favor escoge una solución \n1.Manera super efe\n2.Forma de Divide y Venceras;)");
+						.pedirDato("Por favor escoge una solucion \n1.Manera super efe\n2.Forma de Divide y Venceras ;)");
 				do {
-					t = vista.pedirDato("Digite el tama�o de cantidad de filas: ");
+					t = vista.pedirDato("Digite el tamano de cantidad de filas: ");
 				} while (t <= 0);
 				do {
-					c = vista.pedirDato("Digite el tama�o de cantidad de columnas: ");
+					c = vista.pedirDato("Digite el tamano de cantidad de columnas: ");
 				} while (c <= 0);
 				num = new Matriz(t, c);
 				break;
 			}
 			default:{
-				vista.imprimirMensaje("Disculpa, Ingresaste un número incorrecto");
+				vista.imprimirMensaje("Disculpa, Ingresaste un numero incorrecto");
 				salir();
 			}
 		}	
@@ -93,7 +93,7 @@ public class Controller {
 		vista.imprimirMensaje(".: BIENVENIDO AL PROGRAMA MATRIZ:.");
 
 		int op = vista.pedirDato(
-				"Seleccione el modo de ingreso de los dato; " + "\n1.Manual" + "\n2.Aletoria" + "\n\nOpcion: ");
+				"Seleccione el modo de ingreso de los datos ; " + "\n1.Manual" + "\n2.Aletoria" + "\n\nOpcion: ");
 
 		capturarMatriz(op);
 		String a = num.imprimirMatriz();
@@ -106,7 +106,7 @@ public class Controller {
 
 			for (int i = 0; i < num.getFilas(); i++) {
 				for (int j = 0; j < num.getColumnas(); j++) {
-					num.asignarValorMatriz(vista.pedirDato("Valor dde la pos [" + i + "][ " + j + "]: "), i, j);
+					num.asignarValorMatriz(vista.pedirDato("Valor de la pos [" + i + "][ " + j + "]: "), i, j);
 				}
 			}
 		} else {
