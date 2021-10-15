@@ -47,7 +47,7 @@ public class Controller {
 						vector.ordenar(vector1);
 						vector.ordenar(vector2);
 						var unionVector = vector.juntarVectores(vector1, vector2);
-						var mediana = vector.mediana(vector1, vector2,0,tam, 0, tam);
+						var mediana = vector.mediana(vector1, vector2,0,tam-1, 0, tam-1);
 						vista.imprimirMensaje("Solucion al ejercicio \nVector1 --> "+vector.toString(vector1)+"\nVector2 >> "+vector.toString(vector2)+"\nLa mediana entre los arrays igual a "+mediana+"\nEl vector final es >> "+vector.toString(unionVector));
 						
 						if(vista.pedirDato("Desea seguir o parar el programa \n1.Seguir\n2.Cualquier numero para salir")==1) {
