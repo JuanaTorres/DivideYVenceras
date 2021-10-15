@@ -25,21 +25,41 @@ public class Controller {
 			case 1: {
 				int op = vista.pedirDato("Por favor ingresa la opción que quieres\n1.Generar vectores \n2.Quiero crear los 2 vectores");
 				var tam = vista.pedirDato("Ingresa el tamaño de los array");
-					if(op == 1) {
-						var rangoInicial = vista.pedirDato("Ingresa el rango inicial");
-						var rangoFinal = vista.pedirDato("Ingresa el rango final");
-						var vector1 = vector.crearVector(rangoInicial, rangoFinal, tam);
-						var vector2 = vector.crearVector(rangoInicial, rangoFinal, tam);
+				if(op == 1) {
+					var rangoInicial = vista.pedirDato("Ingresa el rango inicial");
+					var rangoFinal = vista.pedirDato("Ingresa el rango final");
+					var vector1 = vector.crear(rangoInicial, rangoFinal, tam);
+					var vector2 = vector.crear(rangoInicial, rangoFinal, tam);
+					var unionVector = vector.juntarVectores(vector1, vector2);
+					var mediana = vector.mediana(vector1, vector2,0,tam, 0, tam);
+					vista.imprimirMensaje("Solución al ejercicio \nVector1 --> "+vector.toString(vector1)+"\nVector2 --> "+vector.toString(vector2)+"\nLa mediana entre los arrays igual a "+mediana+"\nEl vector final es --> "+vector.toString(unionVector));
+					if(vista.pedirDato("Desea seguir o parar el programa \n1.Seguir\n2.Cualquier número para salir")==1) {
+						new Controller();
+					}else {
+						salir();
+					}
+				}else if (op == 2) {
+					var x = 0;
+					var vector1 = new int[tam];
+						var vector2 = new int[tam];
+						for (int i = 0; i < vector1.length; i++) {
+							vector1[i] = vista.pedirDato("Valor en la posición "+i+" del vector uno");	
+						}
+						for (int i = 0; i < vector2.length; i++) {
+							vector2[i] = vista.pedirDato("Valor en la posición "+i+" del vector dos ");	
+						}
+						vector.ordenar(vector1);
+						vector.ordenar(vector2);
 						var unionVector = vector.juntarVectores(vector1, vector2);
+						vista.imprimirMensaje("Solución al ejercicio \nVector1 --> "+vector.toString(vector1)+"\nVector2 --> "+vector.toString(vector2)+"\nLa mediana entre los arrays igual a \nEl vector final es --> "+vector.toString(unionVector));
 						var mediana = vector.mediana(vector1, vector2,0,tam, 0, tam);
 						vista.imprimirMensaje("Solución al ejercicio \nVector1 --> "+vector.toString(vector1)+"\nVector2 --> "+vector.toString(vector2)+"\nLa mediana entre los arrays igual a "+mediana+"\nEl vector final es --> "+vector.toString(unionVector));
+
 						if(vista.pedirDato("Desea seguir o parar el programa \n1.Seguir\n2.Cualquier número para salir")==1) {
 							new Controller();
 						}else {
 							salir();
 						}
-					}else if (op == 2) {
-						
 					}else {
 						vista.imprimirMensaje("Disculpa, Ingresaste un número incorrecto");
 						salir();

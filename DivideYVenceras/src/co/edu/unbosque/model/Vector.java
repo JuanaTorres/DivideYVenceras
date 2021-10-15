@@ -9,7 +9,7 @@ public class Vector {
 		
 	}
 
-	public  int [] crearVector(int desde, int hasta, int tam){
+	public  int [] crear(int desde, int hasta, int tam){
         int[] numeros = new int[tam];                                                                             
         Random rnd = new Random();
         for (int i = 0; i < numeros.length; i++) {
@@ -29,6 +29,9 @@ public class Vector {
         System.arraycopy(b, 0, concate, lenArray1, lenArray2);
         Arrays.sort(concate);
         return concate;
+	}
+	public void ordenar(int[] vector) {
+		Arrays.sort(vector);
 	}
 	
 	public int mediana(int[] X, int[] Y, int primX, int ultX, int primY, int ultY) {
