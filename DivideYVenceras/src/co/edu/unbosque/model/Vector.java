@@ -9,9 +9,23 @@ public class Vector {
 		
 	}
 
-	public  int [] crear(int desde, int hasta, int tam){
+	public  int [] crear(int tam){
+
+		Random rnd = new Random();
+		int desde = rnd.nextInt(1000);
+		int hasta = rnd.nextInt(1000);
+		while(desde == hasta){
+			hasta=rnd.nextInt(1000);
+		}
+		if((desde-hasta) < -10){
+			hasta +=10;
+		} 
+		if((hasta-desde) < 1) {
+			var x = hasta;
+			hasta = desde+20;
+			desde = x;
+		}
         int[] numeros = new int[tam];                                                                             
-        Random rnd = new Random();
         for (int i = 0; i < numeros.length; i++) {
              numeros[i] = rnd.nextInt(hasta - desde + 1) + desde;                                                 
         }
