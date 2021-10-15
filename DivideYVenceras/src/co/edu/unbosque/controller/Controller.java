@@ -1,12 +1,10 @@
-package co.edu.unbosque.controller;
+	package co.edu.unbosque.controller;
 
 import java.util.Random;
-
 
 import co.edu.unbosque.model.Matriz;
 import co.edu.unbosque.model.Vector;
 import co.edu.unbosque.view.View;
-
 
 public class Controller {
 
@@ -29,7 +27,7 @@ public class Controller {
 					var vector1 = vector.crear(tam);
 					var vector2 = vector.crear(tam);
 					var unionVector = vector.juntarVectores(vector1, vector2);
-					var mediana = vector.mediana(vector1, vector2,0,tam, 0, tam);
+					var mediana = vector.mediana(vector1, vector2,0,tam-1, 0, tam-1);
 					vista.imprimirMensaje("Soluci9n al ejercicio \nVector1 >> "+vector.toString(vector1)+"\nVector2 >> "+vector.toString(vector2)+"\nLa mediana entre los arrays igual a "+mediana+"\nEl vector final es --> "+vector.toString(unionVector));
 					if(vista.pedirDato("Desea seguir o parar el programa \n1.Seguir\n2.Cualquier número para salir")==1) {
 						new Controller();
