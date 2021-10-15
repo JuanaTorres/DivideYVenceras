@@ -14,6 +14,23 @@ public class Controller {
 		vista = new View();
 		int t = 0;
 		int c = 0;
+		int dato = vista.pedirDato(
+				"Por favor escoja el ejercicio que quiere realizar\n1.Mediana de dos vectores\n2.Multiplicación de dos Matrices");
+		switch (dato) {
+			case 1: {
+	
+				break;
+			}
+			case 2: {
+				dato = vista
+						.pedirDato("Por favor escoge una solución \n1.Manera super efe\n2.Forma de Devide y Venceras;)");
+				break;
+			}
+			default:{
+				vista.imprimirMensaje("Disculpa, Ingresaste un número incompleto");
+			}
+		}	
+
 		do {
 			t = vista.pedirDato("Digite el tama�o de cantidad de filas: ");
 		} while (t <= 0);
