@@ -195,7 +195,7 @@ public class Strassen {
  
        
     
-    public void imprimirMatriz(int [][] A) {
+    public String imprimirMatriz(int [][] A) {
 		String r = "";
 		int filas = A.length;
 		int columnas = A[0].length;
@@ -208,7 +208,7 @@ public class Strassen {
 			r = r + "\n";
 			
 		}
-		System.out.println(r);
+		return r;
 
 	}
     
