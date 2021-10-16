@@ -10,7 +10,7 @@ public class Strassen {
 	 
     // Method 1
     // Function to multiply matrices
-    public int[][] multiply(int[][] A, int[][] B)
+    public int[][] multiplicarDYV(int[][] A, int[][] B)
     {
         // Order of matrix
         int n = A.length;
@@ -41,60 +41,60 @@ public class Strassen {
             int[][] B22 = new int[n / 2][n / 2];
  
             // Step 2: Dividing matrix A into 4 halves
-            split(A, A11, 0, 0);
-            split(A, A12, 0, n / 2);
-            split(A, A21, n / 2, 0);
-            split(A, A22, n / 2, n / 2);
+            dividir(A, A11, 0, 0);
+            dividir(A, A12, 0, n / 2);
+            dividir(A, A21, n / 2, 0);
+            dividir(A, A22, n / 2, n / 2);
  
             // Step 2: Dividing matrix B into 4 halves
-            split(B, B11, 0, 0);
-            split(B, B12, 0, n / 2);
-            split(B, B21, n / 2, 0);
-            split(B, B22, n / 2, n / 2);
+            dividir(B, B11, 0, 0);
+            dividir(B, B12, 0, n / 2);
+            dividir(B, B21, n / 2, 0);
+            dividir(B, B22, n / 2, n / 2);
  
             // Using Formulas as described in algorithm
  
             // M1:=(A1+A3)×(B1+B2)
             int[][] M1
-                = multiply(add(A11, A22), add(B11, B22));
+                = multiplicarDYV(sumar(A11, A22), sumar(B11, B22));
            
             // M2:=(A2+A4)×(B3+B4)
-            int[][] M2 = multiply(add(A21, A22), B11);
+            int[][] M2 = multiplicarDYV(sumar(A21, A22), B11);
            
             // M3:=(A1−A4)×(B1+A4)
-            int[][] M3 = multiply(A11, sub(B12, B22));
+            int[][] M3 = multiplicarDYV(A11, restar(B12, B22));
            
             // M4:=A1×(B2−B4)
-            int[][] M4 = multiply(A22, sub(B21, B11));
+            int[][] M4 = multiplicarDYV(A22, restar(B21, B11));
            
             // M5:=(A3+A4)×(B1)
-            int[][] M5 = multiply(add(A11, A12), B22);
+            int[][] M5 = multiplicarDYV(sumar(A11, A12), B22);
            
             // M6:=(A1+A2)×(B4)
             int[][] M6
-                = multiply(sub(A21, A11), add(B11, B12));
+                = multiplicarDYV(restar(A21, A11), sumar(B11, B12));
            
             // M7:=A4×(B3−B1)
             int[][] M7
-                = multiply(sub(A12, A22), add(B21, B22));
+                = multiplicarDYV(restar(A12, A22), sumar(B21, B22));
  
             // P:=M2+M3−M6−M7
-            int[][] C11 = add(sub(add(M1, M4), M5), M7);
+            int[][] C11 = sumar(restar(sumar(M1, M4), M5), M7);
            
             // Q:=M4+M6
-            int[][] C12 = add(M3, M5);
+            int[][] C12 = sumar(M3, M5);
            
             // R:=M5+M7
-            int[][] C21 = add(M2, M4);
+            int[][] C21 = sumar(M2, M4);
            
             // S:=M1−M3−M4−M5
-            int[][] C22 = add(sub(add(M1, M3), M2), M6);
+            int[][] C22 = sumar(restar(sumar(M1, M3), M2), M6);
  
             // Step 3: Join 4 halves into one result matrix
-            join(C11, R, 0, 0);
-            join(C12, R, 0, n / 2);
-            join(C21, R, n / 2, 0);
-            join(C22, R, n / 2, n / 2);
+            unir(C11, R, 0, 0);
+            unir(C12, R, 0, n / 2);
+            unir(C21, R, n / 2, 0);
+            unir(C22, R, n / 2, n / 2);
         }
  
         // Step 4: Return result
@@ -103,7 +103,7 @@ public class Strassen {
  
     // Method 2
     // Function to subtract two matrices
-    public int[][] sub(int[][] A, int[][] B)
+    public int[][] restar(int[][] A, int[][] B)
     {
         //
         int n = A.length;
@@ -130,7 +130,7 @@ public class Strassen {
  
     // Method 3
     // Function to add two matrices
-    public int[][] add(int[][] A, int[][] B)
+    public int[][] sumar(int[][] A, int[][] B)
     {
  
         //
@@ -156,10 +156,11 @@ public class Strassen {
         return C;
     }
  
+    
     // Method 4
     // Function to split parent matrix
     // into child matrices
-    public void split(int[][] P, int[][] C, int iB, int jB)
+    public void dividir(int[][] P, int[][] C, int iB, int jB)
     {
         // Iterating over elements of 2D matrix
         // using nested for loops
@@ -177,7 +178,7 @@ public class Strassen {
     // Method 5
     // Function to join child matrices
     // into (to) parent matrix
-    public void join(int[][] C, int[][] P, int iB, int jB)
+    public void unir(int[][] C, int[][] P, int iB, int jB)
  
     {
         // Iterating over elements of 2D matrix

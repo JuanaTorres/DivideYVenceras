@@ -97,7 +97,7 @@ public class Controller {
 
 			} else if (dato == 2) {
 
-				int[][] Z = matrix.multiply(num.getNum(), num2.getNum());
+				int[][] Z = matrix.multiplicarDYV(num.getNum(), num2.getNum());
 
 				vista.imprimirMensaje("Matriz final\n" + matrix.imprimirMatriz(Z));
 
