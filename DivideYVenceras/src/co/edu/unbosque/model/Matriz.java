@@ -13,6 +13,14 @@ public class Matriz {
 
 	}
 
+	public int[][] getNum() {
+		return num;
+	}
+
+	public void setNum(int[][] num) {
+		this.num = num;
+	}
+
 	public int getFilas() {
 		return filas;
 	}
@@ -47,46 +55,6 @@ public class Matriz {
 		num[f][c] = valor;
 
 	}
-	
-	
-
-	public int[][] multiply(int[][] a, int[][] b) {
-		int[][] c = new int[a.length][b[0].length];
-		//Se valida si la matriz se puede multiplicar 
-		if (a[0].length == b.length) {
-			for (int i = 0; i < a.length; i++) {
-				for (int j = 0; j < b[0].length; j++) {
-					for (int k = 0; k < a[0].length; k++) {
-						// Se multiplica la matriz
-						c[i][j] += a[i][k] * b[k][j];
-					}
-				}
-			}
-		}
-
-		return c;
-	}
-	public int[][] ordenaMatriz(int[][] num) {
-		for (int i=0; i<filas; i++) {
-			int aux = 0;
-			int pos = 0;
-			for (int j = 0; j < columnas; j++) {
-				pos=j;
-				aux = num[i][j];
-				while((pos>0)&&(num[i][pos-1]<aux)) {
-					num[i][pos]= num[i][pos-1];
-					pos--;
-				}
-				num[i][pos]=aux;
-			}
-		}
-		return num;
-	}
-	
-	
-	
-	//Metodos Strassen 
-	
 	
 }
 
