@@ -1,3 +1,6 @@
+/**
+ * The package that contains this class
+ */
 package co.edu.unbosque.model;
 
 import java.util.Arrays;

@@ -233,5 +233,11 @@ public class Strassen {
 
 		return c;
 	}
-    
+    public boolean validarPotencia(int num) {
+    	double x=(Math.log10(num) / Math.log10(2));
+    	if(x-Math.floor(x)==0.0) {
+    		return true;
+    	}
+		return false;
+ 	}
 }
