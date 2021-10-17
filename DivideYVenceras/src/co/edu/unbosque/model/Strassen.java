@@ -7,7 +7,7 @@ package co.edu.unbosque.model;
 /**
  * Clase Matriz que crea un arreglo bidimensional, asigna sus valores, tamanos e imprime
  *
- * @authors Paula Andre Anaya Ramirez, Juana
+ * @authors Paula Andrea Anaya Ramirez, Juana
  *          Valentina Torres Parrado and Andres Galvis Bolivar
  *
  * @version 1.0

@@ -44,10 +44,10 @@ public class Controller {
 				"Por favor escoja el ejercicio que quiere realizar\n1.Mediana de dos vectores\n2.Multiplicacion de dos Matrices");
 		switch (dato) {
 		case 1: {
-			int op = vista.pedirDato(
-					"Por favor ingresa la opcion que quieres\n1.Generar vectores \n2.Quiero crear los 2 vectores");
-			var tam = vista.pedirDato("Ingresa el tamaño de los array");
+			int op = vista.pedirDato("Por favor ingresa la opcion que quieres\n1.Generar vectores \n2.Quiero crear los 2 vectores");
+
 			if (op == 1) {
+				var tam = vista.pedirDato("Ingresa el tamaño de los array");
 				var vector1 = vector.crear(tam);
 				var vector2 = vector.crear(tam);
 				var unionVector = vector.juntarVectores(vector1, vector2);
@@ -57,6 +57,7 @@ public class Controller {
 						+ "\nEl vector final es --> " + vector.toString(unionVector));
 
 			} else if (op == 2) {
+				var tam = vista.pedirDato("Ingresa el tamaño de los array");
 				var x = 0;
 				var vector1 = new int[tam];
 				var vector2 = new int[tam];
@@ -70,13 +71,14 @@ public class Controller {
 				vector.ordenar(vector2);
 				var unionVector = vector.juntarVectores(vector1, vector2);
 				var mediana = vector.mediana(vector1, vector2, 0, tam - 1, 0, tam - 1);
-				vista.imprimirMensaje("Solucion al ejercicio \nVector1 --> " + vector.toString(vector1)
+				vista.imprimirMensaje("Solucion al ejercicio \nVector1 >> " + vector.toString(vector1)
 						+ "\nVector2 >> " + vector.toString(vector2) + "\nLa mediana entre los arrays igual a "
 						+ mediana + "\nEl vector final es >> " + vector.toString(unionVector));
 
 			} else {
-				vista.imprimirMensaje("Disculpa, Ingresaste un numero incorrecto");
-				salir();
+				vista.imprimirMensaje("Disculpa, Ingresaste una opcion no valida");
+				funcionar();
+
 			}
 			break;
 		}

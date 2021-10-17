@@ -58,7 +58,7 @@ public class View {
 				cambio = Integer.parseInt(aux);
 			} catch (NumberFormatException e) {
 				cambio = 0;
-				imprimirMensajeAdvertencia("Debe ingresasr un número");
+				imprimirMensajeAdvertencia("Debes ingresar un número");
 			}
 		}
 		return cambio;
