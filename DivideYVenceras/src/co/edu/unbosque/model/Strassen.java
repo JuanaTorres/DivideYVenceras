@@ -1,36 +1,55 @@
+/**
+ * El package que contiene la clase
+ */
 package co.edu.unbosque.model;
 
+
+/**
+ * Clase Matriz que crea un arreglo bidimensional, asigna sus valores, tamanos e imprime
+ *
+ * @authors Paula Andre Anaya Ramirez, Juana
+ *          Valentina Torres Parrado and Andres Galvis Bolivar
+ *
+ * @version 1.0
+ *
+ */
 public class Strassen {
-	
-	
-	
-	public Strassen () {
-		
+
+    /**
+     * Metodo constructor de la clase
+     */
+    public Strassen () {
 	}
-	 
-    // Method 1
-    // Function to multiply matrices
+
+    /**
+     * Metodo de multiplicar matrices por DYV
+     *
+     * @param A matriz A
+     * @param B matriz B
+     * @return R resultado de la multiplicacion
+     *
+     */
     public int[][] multiplicarDYV(int[][] A, int[][] B)
     {
-        // Order of matrix
+        // Orden de matriz
         int n = A.length;
  
-        // Creating a 2D square matrix with size n
-        // n is input from the user
+        // Creando una matriz cuadrada 2D con tamano n
+        // n es entrada del usuario
         int[][] R = new int[n][n];
  
-        // Base case
-        // If there is only single element
+        // Caso base
+        //Si solo hay un elemento
         if (n == 1)
  
-            // Returning the simple multiplication of
-            // two elements in matrices
+            // Devolviendo la simple multiplicación de
+            // dos elementos en las matrices
             R[0][0] = A[0][0] * B[0][0];
  
-        // Matrix
+        // Matriz
         else {
-            // Step 1: Dividing Matrix into parts
-            // by storing sub-parts to variables
+            // Paso 1: Dividir la matriz en partes
+            //almacenando subpartes en variables
             int[][] A11 = new int[n / 2][n / 2];
             int[][] A12 = new int[n / 2][n / 2];
             int[][] A21 = new int[n / 2][n / 2];
@@ -40,19 +59,20 @@ public class Strassen {
             int[][] B21 = new int[n / 2][n / 2];
             int[][] B22 = new int[n / 2][n / 2];
  
-            // Step 2: Dividing matrix A into 4 halves
-            dividir(A, A11, 0, 0);
-            dividir(A, A12, 0, n / 2);
-            dividir(A, A21, n / 2, 0);
-            dividir(A, A22, n / 2, n / 2);
+            // Paso 2: División de la matriz A en 4 mitades
+            partir(A, A11, 0, 0);
+            partir(A, A12, 0, n / 2);
+            partir(A, A21, n / 2, 0);
+            partir(A, A22, n / 2, n / 2);
  
-            // Step 2: Dividing matrix B into 4 halves
-            dividir(B, B11, 0, 0);
-            dividir(B, B12, 0, n / 2);
-            dividir(B, B21, n / 2, 0);
-            dividir(B, B22, n / 2, n / 2);
+            // Paso 2:
+            //División de la matriz B en 4 mitades
+            partir(B, B11, 0, 0);
+            partir(B, B12, 0, n / 2);
+            partir(B, B21, n / 2, 0);
+            partir(B, B22, n / 2, n / 2);
  
-            // Using Formulas as described in algorithm
+            // Usar fórmulas como se describe en el algoritmo
  
             // M1:=(A1+A3)×(B1+B2)
             int[][] M1
@@ -90,112 +110,129 @@ public class Strassen {
             // S:=M1−M3−M4−M5
             int[][] C22 = sumar(restar(sumar(M1, M3), M2), M6);
  
-            // Step 3: Join 4 halves into one result matrix
+            // Paso 3: Unir 4 mitades en una matriz de resultados
             unir(C11, R, 0, 0);
             unir(C12, R, 0, n / 2);
             unir(C21, R, n / 2, 0);
             unir(C22, R, n / 2, n / 2);
         }
  
-        // Step 4: Return result
+        // Paso 4: Retorna el resultado
         return R;
     }
  
-    // Method 2
-    // Function to subtract two matrices
+    // Metodo 2
+    /**
+     * Metodo para restar dos matrices
+     *
+     * @param A matriz A
+     * @param B matriz B
+     * @return C matriz C retorna el resultado de la resta
+     */
     public int[][] restar(int[][] A, int[][] B)
     {
-        //
+        //Orden de matriz
         int n = A.length;
  
         //
         int[][] C = new int[n][n];
  
-        // Iterating over elements of 2D matrix
-        // using nested for loops
+        // Iterando sobre elementos de matriz 2D
+        // usando bucles for anidados
  
-        // Outer loop for rows
+        // filas
         for (int i = 0; i < n; i++)
  
-            // Inner loop for columns
+            //columnas
             for (int j = 0; j < n; j++)
- 
-                // Subtracting corresponding elements
-                // from matrices
+                //Restar elementos correspondientes
+                //de matrices
                 C[i][j] = A[i][j] - B[i][j];
  
-        // Returning the resultant matrix
+        // retorna la matriz resultante
         return C;
     }
  
     // Method 3
-    // Function to add two matrices
+    /**
+     * Metodo para sumar dos matrices
+     * @param A matriz A
+     * @param B matriz B
+     * @return C matriz C  resultado de la suma
+     */
     public int[][] sumar(int[][] A, int[][] B)
     {
  
-        //
+        //Orden de matriz
         int n = A.length;
- 
-        // Creating a 2D square matrix
+
         int[][] C = new int[n][n];
  
-        // Iterating over elements of 2D matrix
-        // using nested for loops
+        // Iterando sobre elementos de matriz 2D
+        // usando bucles for anidados
  
-        // Outer loop for rows
+        // filas
         for (int i = 0; i < n; i++)
  
-            // Inner loop for columns
+            // columnas
             for (int j = 0; j < n; j++)
- 
-                // Adding corresponding elements
-                // of matrices
+                //Agregar elementos correspondientes
+                // a las matrices
                 C[i][j] = A[i][j] + B[i][j];
  
-        // Returning the resultant matrix
+        //Retorna matriz resultante
         return C;
     }
  
     
     // Method 4
-    // Function to split parent matrix
-    // into child matrices
-    public void dividir(int[][] P, int[][] C, int iB, int jB)
+    /**
+     * Metodo que ayuda a partir la matriz en matrices mas pequenas
+     * @param P
+     * @param C
+     * @param iB
+     * @param jB
+     */
+    public void partir(int[][] P, int[][] C, int iB, int jB)
     {
-        // Iterating over elements of 2D matrix
-        // using nested for loops
- 
-        // Outer loop for rows
+        // Filas
         for (int i1 = 0, i2 = iB; i1 < C.length; i1++, i2++)
  
-            // Inner loop for columns
+            //columnas
             for (int j1 = 0, j2 = jB; j1 < C.length;
                  j1++, j2++)
  
                 C[i1][j1] = P[i2][j2];
     }
- 
-    // Method 5
-    // Function to join child matrices
-    // into (to) parent matrix
+
+    /**
+     * Metodo para unir las matrices divididas a la matriz padre
+     *
+     * @param C matriz C
+     * @param P matriz P
+     * @param iB
+     * @param jB
+     */
     public void unir(int[][] C, int[][] P, int iB, int jB)
  
     {
-        // Iterating over elements of 2D matrix
-        // using nested for loops
- 
-        // Outer loop for rows
+        // Filas
         for (int i1 = 0, i2 = iB; i1 < C.length; i1++, i2++)
  
-            // Inner loop for columns
+            // Columna
             for (int j1 = 0, j2 = jB; j1 < C.length;
                  j1++, j2++)
  
                 P[i2][j2] = C[i1][j1];
     }
- 
-       
-    
+
+
+    /**
+     * Metodo para imprimir una matriz
+     *
+     * @param A matriz a imprimir
+     * @return r String con los datos de la matriz
+     */
     public String imprimirMatriz(int [][] A) {
 		String r = "";
 		int filas = A.length;
@@ -212,8 +249,15 @@ public class Strassen {
 		return r;
 
 	}
-    
-    
+
+
+    /**
+     * Medoto para multiplicar matrices de la manera convencional
+     *
+     * @param a matriz A
+     * @param b matriz B
+     * @return c matriz con el resultado de la multiplicacion
+     */
     public int[][] multiplicacionNomal (int[][] a, int[][] b) {
     	
 		int[][] c = new int[a.length][b[0].length];
@@ -233,6 +277,13 @@ public class Strassen {
 
 		return c;
 	}
+
+
+    /**
+     * Metodo para validar que el tamano de la matriz sea potencia de 2
+     * @param num
+     * @return booleano con la respuesta
+     */
     public boolean validarPotencia(int num) {
     	double x=(Math.log10(num) / Math.log10(2));
     	if(x-Math.floor(x)==0.0) {
