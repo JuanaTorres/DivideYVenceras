@@ -57,7 +57,6 @@ public class Matriz {
 	
 /**
  * Setters y Getters
- * @return
  */
 	public int[][] getNum() {
 		return num;
